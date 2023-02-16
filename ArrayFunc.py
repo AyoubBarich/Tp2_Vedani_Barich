@@ -27,3 +27,12 @@ def iterate(Array:list,firstIndex,secondIndex):
     Array[secondIndex]=tmp
     return Array
     
+
+def getMin(Array:list,firstIndex):
+    min=firstIndex
+    for i in range(firstIndex+1,len(Array)):
+        
+        if Array[min] < Array[i]:
+            min=i
+    return min
+

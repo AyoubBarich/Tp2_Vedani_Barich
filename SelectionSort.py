@@ -2,7 +2,7 @@
 import ArrayFunc 
 
 
-def main(Array:list):
+def selectionSort(Array:list):
     print(Array)
     lenght = len(Array)
     for i in range(lenght):
@@ -13,7 +13,6 @@ def main(Array:list):
 
 
 
-print(main(ArrayFunc.GenerateRandomArray(5,-10,10)))
         
 
 

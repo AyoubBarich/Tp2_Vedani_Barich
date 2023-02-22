@@ -36,3 +36,5 @@ def getMin(Array:list,firstIndex):
             min=i
     return min
 
+def GetRandomIndex(firstIndex,lastIndex):
+    return randint(firstIndex,lastIndex)

@@ -13,12 +13,13 @@ def Partition(Array,firstIndex,lastIndex):
     return index+1
 
 def quickSort(Array,firstIndex, lastIndex):
-    print("Unsorted Array : ",Array)
+    
     if firstIndex<lastIndex:
         pivot = Partition(Array,firstIndex,lastIndex)
         quickSort(Array,firstIndex,pivot-1)
         quickSort(Array,pivot+1,lastIndex)
-    print("Sorted Array :",Array)
+    
+def main(Array):
+    return quickSort(Array,0,len(Array)-1)
 
-quickSort(ArrayFunc.GenerateRandomArray(5,-10,10),0,4)
 

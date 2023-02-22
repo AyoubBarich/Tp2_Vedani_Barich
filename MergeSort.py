@@ -1,14 +1,14 @@
 import ArrayFunc
 
-def mergeSort(Array):
+def main(Array):
     if len(Array)>1:
         midPoint = len(Array)//2
 
         rightArray = Array[midPoint:]
         leftArray = Array[:midPoint]
 
-        mergeSort(rightArray)
-        mergeSort(leftArray)
+        main(rightArray)
+        main(leftArray)
 
         i=0
         j=0

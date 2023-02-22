@@ -1,7 +1,6 @@
 import ArrayFunc
 
-def InsertionSort(Array) :
-    print(Array)
+def main(Array) :
     for k in range (1,len(Array)):
         key = Array[k]
         i = k-1

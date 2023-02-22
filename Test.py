@@ -3,6 +3,7 @@ from random import randint
 import time
 import matplotlib.pyplot as plt
 import math
+import HeapSort,InsertionSort,MergeSort,QuickSort,SelectionSort,ArrayFunc
 
 
 
@@ -13,23 +14,22 @@ import math
 
 #First test : we test the if the results of each function is compatible with the others
 
-# def TestCompatibility(testArray):
-#     lenght = len(testArray)-1
-#     methode1 = Methode1.Main(testArray)
-#     methode2 = Methode2.Main(testArray)
-#     methode3 = [Methode3.Main(testArray)[1],Methode3.Main(testArray)[2]]
-#     if methode1==methode2 and methode2==methode3:
-#         return True
-#     else:
-#         print(testArray,"methode 1: ",methode1,"methode 2: ",methode2,"methode 3: ",methode3)
-#         return False
+def TestCompatibility(testArray):
 
-# def Tester(size,numberOftests):
-#     for i in range (numberOftests):
-#         print(TestCompatibility(Methode1.GenerateRandomArray(size,-10,10)))
+    heapSort = HeapSort.main(testArray)
+    insertionSort = InsertionSort.main(testArray)
+    mergeSort = MergeSort.main(testArray)
+    quickSort = QuickSort.main(testArray)
+    #selectionSort = SelectionSort.selectionSort(testArray)
 
-#the tests that return false are due to arrays that can have two diffrent subsequences with the same max sum.
-#Example:[3, -8, 9, 0, 0] wich accepts  [2, 2] and [2, 4]
+    if heapSort==insertionSort and mergeSort== quickSort and insertionSort == mergeSort:
+        return True
+def Tester(size,numberOftests):
+    for i in range (numberOftests):
+        print(TestCompatibility(ArrayFunc.GenerateRandomArray(size,-10,10)))
+    
+
+
 
 #Second test : we plot the execution time of each function with a given array size
 
@@ -41,7 +41,7 @@ def plotter(methode,sizeMax,step,color):
     Ycoord=[]
     for i in range(5,sizeMax,step):
         start = time.time()
-        methode.Main(Methode1.GenerateRandomArray(i,-10,10))
+        methode.main(ArrayFunc.GenerateRandomArray(i,-10,10))
         execTime = time.time()-start
 
         Xcoord.append(i)
@@ -58,7 +58,7 @@ def complexityPlot(Method,Complexity,sizeMax,step):
     YcoordOfComplexity=[]
     for i in range(5,sizeMax,step):
         start = time.time()
-        Method.Main(Methode1.GenerateRandomArray(i,-10,10))
+        Method.main(ArrayFunc.GenerateRandomArray(i,-10,10))
         execTime = time.time()-start
         Xcoord.append(i)
         Ycoord.append(execTime*CONST)
@@ -68,8 +68,8 @@ def complexityPlot(Method,Complexity,sizeMax,step):
     plt.ylabel("Temps")
     return (plt.plot(Xcoord,YcoordOfComplexity,"b"),plt.plot(Xcoord,Ycoord,"r"))
 
-def Cube(x):
-    return x*x*x
+# def Cube(x):
+#     return x*x*x
 
 def Square(x):
     return x*x
@@ -81,19 +81,35 @@ def NLog(x):
 
 
 ###########################################All Functions###########################################
-
+size=2000
+plotter(SelectionSort,size,5,'r')
+plotter(InsertionSort,size,5,'g')
+plotter(QuickSort,size,5,'b')
+plotter(HeapSort,size,5,'y')
+plotter(MergeSort,size,5,'c')
 plt.show()
-###########################################Methode1###########################################
+###########################################Selection Sort###########################################
 
-# complexityPlot(Methode1,Cube,300,50)
+# complexityPlot(SelectionSort,Square,size,50)
 # plt.show()
 
-###########################################Methode2###########################################
+###########################################Insertion Sort###########################################
 
-# complexityPlot(Methode2,Square,2000,10)
+# complexityPlot(InsertionSort,Square,size,50)
 # plt.show()
 
-###########################################Methode3###########################################
+###########################################Quick Sort###########################################
 
-# complexityPlot(Methode3,NLog,2000,10)
+# complexityPlot(QuickSort,NLog,size,50)
+# plt.show()
+
+###########################################Heap Sort###########################################
+
+
+# complexityPlot(HeapSort,NLog,size,50)
+# plt.show()
+
+###########################################merge Sort###########################################
+
+# complexityPlot(MergeSort,NLog,size,5)
 # plt.show()

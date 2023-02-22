@@ -19,8 +19,8 @@ def EntasserMax(Array,lenght,index):
         EntasserMax(Array,lenght,root)
     
     
-def heapSort (Array):
-    print("unsorted array :",Array)
+def main (Array):
+    
     lenght = len(Array)
     for i in range((lenght//2),-1,-1):
         EntasserMax(Array,lenght,i)
@@ -29,6 +29,6 @@ def heapSort (Array):
         Array = ArrayFunc.iterate(Array,i,0)
         #Array[i], Array[0]= Array[0], Array[i]
         EntasserMax(Array,i,0)
-    print("Sorted Array :",Array)
+    
 
 

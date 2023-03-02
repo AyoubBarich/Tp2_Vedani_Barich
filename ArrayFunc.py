@@ -20,14 +20,14 @@ def Somme(Array):
             Sum+=i
         return Sum
     return Array
-
+#exchanges the first index and second Index in the givn array
 def iterate(Array:list,firstIndex,secondIndex):
     tmp=Array[firstIndex]
     Array[firstIndex]=Array[secondIndex]
     Array[secondIndex]=tmp
     return Array
     
-
+#returns the index of the minimum value in the given array
 def getMin(Array:list,firstIndex):
     min=firstIndex
     for i in range(firstIndex+1,len(Array)):
@@ -35,6 +35,6 @@ def getMin(Array:list,firstIndex):
         if Array[min] < Array[i]:
             min=i
     return min
-
+#returns a random value between first index and last index
 def GetRandomIndex(firstIndex,lastIndex):
     return randint(firstIndex,lastIndex)

@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 import math
 import HeapSort,InsertionSort,MergeSort,QuickSort,SelectionSort,ArrayFunc
 
+SORT ={ 0:InsertionSort.main,
+        1:SelectionSort.main,
+        2:HeapSort.main,
+        3:MergeSort.main,
+        4:QuickSort.main}
+
+
 
 
 
@@ -32,13 +39,14 @@ def Tester(size,numberOftests):
 
 
 #Second test : we plot the execution time of each function with a given array size
-
+color=['r','g','b','y','c']
 CONST=1000
 
-def plotter(methode,sizeMax,step,color):
+def plotter(methode,sizeMax,step,color,label):
     
     Xcoord=[]
     Ycoord=[]
+
     for i in range(5,sizeMax,step):
         start = time.time()
         methode.main(ArrayFunc.GenerateRandomArray(i,-10,10))
@@ -46,11 +54,42 @@ def plotter(methode,sizeMax,step,color):
 
         Xcoord.append(i)
         Ycoord.append(execTime*CONST)
-
-
     plt.xlabel("Taille de la liste")
     plt.ylabel("Temps")
-    return plt.plot(Xcoord,Ycoord,color)
+
+    return plt.plot(Xcoord,Ycoord,color,label=label)
+
+# def plotterWithSameArray(sizeMax,step):
+    
+#         Xcoord=[[],[],[],[],[]]
+#         Ycoord=[[],[],[],[],[]]
+#         for i in range(5,sizeMax,step):
+#             Array=ArrayFunc.GenerateRandomArray(i,-10,10)
+             
+
+#             for j in range(0,4):
+#                 start = time.time()
+#                 SORT[j](Array)
+#                 execTime = time.time()-start
+
+#                 Xcoord[j].append(i)
+#                 Ycoord[j].append(execTime*CONST)
+
+#         plt.xlabel("Taille de la liste")
+#         plt.ylabel("Temps")
+        
+#         return plt.plot(Xcoord[0],Ycoord[0])
+        
+        
+        
+    
+
+    
+
+
+
+
+
 
 def complexityPlot(Method,Complexity,sizeMax,step):
     Xcoord=[]
@@ -81,12 +120,16 @@ def NLog(x):
 
 
 ###########################################All Functions###########################################
-size=2000
-plotter(SelectionSort,size,5,'r')
-plotter(InsertionSort,size,5,'g')
-plotter(QuickSort,size,5,'b')
-plotter(HeapSort,size,5,'y')
-plotter(MergeSort,size,5,'c')
+size=10000
+step=300
+plotter(SelectionSort,size,step,'r',label='Selection Sort')
+plotter(InsertionSort,size,step,'g',label='Insertion Sort')
+plotter(QuickSort,size,step,'b',label='Quick Sort')
+plotter(HeapSort,size,step,'y',label='Heap Sort')
+plotter(MergeSort,size,step,'c',label='Merge Sort')
+plt.legend(loc='best')
+
+# plotterWithSameArray(size,5)
 plt.show()
 ###########################################Selection Sort###########################################
 

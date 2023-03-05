@@ -28,7 +28,7 @@ def iterate(Array:list,firstIndex,secondIndex):
     return Array
     
 #returns the index of the minimum value in the given array
-def getMin(Array:list,firstIndex):
+def GetetMin(Array:list,firstIndex):
     min=firstIndex
     for i in range(firstIndex+1,len(Array)):
         

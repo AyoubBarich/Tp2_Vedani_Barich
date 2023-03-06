@@ -42,6 +42,7 @@ def Tester(size,numberOftests):
 color=['r','g','b','y','c']
 CONST=1000
 
+#plots the excution time of the given method
 def plotter(methode,sizeMax,step,color,label):
     
     Xcoord=[]
@@ -59,38 +60,7 @@ def plotter(methode,sizeMax,step,color,label):
 
     return plt.plot(Xcoord,Ycoord,color,label=label)
 
-# def plotterWithSameArray(sizeMax,step):
-    
-#         Xcoord=[[],[],[],[],[]]
-#         Ycoord=[[],[],[],[],[]]
-#         for i in range(5,sizeMax,step):
-#             Array=ArrayFunc.GenerateRandomArray(i,-10,10)
-             
-
-#             for j in range(0,4):
-#                 start = time.time()
-#                 SORT[j](Array)
-#                 execTime = time.time()-start
-
-#                 Xcoord[j].append(i)
-#                 Ycoord[j].append(execTime*CONST)
-
-#         plt.xlabel("Taille de la liste")
-#         plt.ylabel("Temps")
-        
-#         return plt.plot(Xcoord[0],Ycoord[0])
-        
-        
-        
-    
-
-    
-
-
-
-
-
-
+#compares the excution time with the theoretical complexity of our sorting 
 def complexityPlot(Method,Complexity,sizeMax,step):
     Xcoord=[]
     Ycoord=[]
